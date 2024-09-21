@@ -1,3 +1,5 @@
-fn main() {
-    println!("Hello, world!");
-}
+use std::io;
+mod keymanager;
+mod pwdmanager;
+
+fn main() {}

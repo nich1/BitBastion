@@ -1,0 +1,11 @@
+C:\Users\nicht\OneDrive\Desktop\Projects\BitBastion\target\debug\deps\ppv_lite86-5858406db9f5d405.rmeta: C:\Users\nicht\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.20\src/lib.rs C:\Users\nicht\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.20\src\soft.rs C:\Users\nicht\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.20\src\types.rs C:\Users\nicht\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.20\src\x86_64\mod.rs C:\Users\nicht\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.20\src\x86_64\sse2.rs
+
+C:\Users\nicht\OneDrive\Desktop\Projects\BitBastion\target\debug\deps\libppv_lite86-5858406db9f5d405.rlib: C:\Users\nicht\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.20\src/lib.rs C:\Users\nicht\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.20\src\soft.rs C:\Users\nicht\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.20\src\types.rs C:\Users\nicht\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.20\src\x86_64\mod.rs C:\Users\nicht\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.20\src\x86_64\sse2.rs
+
+C:\Users\nicht\OneDrive\Desktop\Projects\BitBastion\target\debug\deps\ppv_lite86-5858406db9f5d405.d: C:\Users\nicht\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.20\src/lib.rs C:\Users\nicht\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.20\src\soft.rs C:\Users\nicht\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.20\src\types.rs C:\Users\nicht\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.20\src\x86_64\mod.rs C:\Users\nicht\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.20\src\x86_64\sse2.rs
+
+C:\Users\nicht\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.20\src/lib.rs:
+C:\Users\nicht\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.20\src\soft.rs:
+C:\Users\nicht\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.20\src\types.rs:
+C:\Users\nicht\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.20\src\x86_64\mod.rs:
+C:\Users\nicht\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.20\src\x86_64\sse2.rs:
