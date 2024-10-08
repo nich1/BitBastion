@@ -7,13 +7,6 @@ mod keymanager;
 mod pwdmanager;
 
 fn main() {
-    d();
-    //pwdmanager::create_service("test", "ms");
-
-    //pwdmanager::read_service("test");
-}
-
-fn d() {
     // Check if key file exists
     if keymanager::is_key_created() {
         // Get password
