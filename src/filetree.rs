@@ -1,8 +1,8 @@
 use aes_gcm::aead::{Aead, KeyInit, OsRng};
 use aes_gcm::{Aes256Gcm, Key, Nonce};
+use rand::RngCore;
 use std::fs;
 use std::io::{Read, Write};
-use rand::RngCore;
 use std::path::Path;
 
 use crate::keymanager;
@@ -43,7 +43,8 @@ fn encrypt_file(file_path: &Path, key: &str) {
     // Reopen the file to read the data (since the file cursor has already moved)
     let mut file_data = Vec::new();
     file = fs::File::open(file_path).expect("Error opening file");
-    file.read_to_end(&mut file_data).expect("Error reading file");
+    file.read_to_end(&mut file_data)
+        .expect("Error reading file");
 
     // Read the key bytes
     let key_bytes = fs::read("Key/enckey.bin").expect("Error reading key");
@@ -66,14 +67,21 @@ fn encrypt_file(file_path: &Path, key: &str) {
     let cipher = Aes256Gcm::new_from_slice(usable_key).expect("Invalid key length");
 
     // Encrypt the data
-    let ciphertext = cipher.encrypt(nonce, file_data.as_ref())
+    let ciphertext = cipher
+        .encrypt(nonce, file_data.as_ref())
         .expect("Encryption failure!");
 
     // Write the encrypted data back to the file, including the marker
     let mut output_file = fs::File::create(file_path).expect("Error creating file");
-    output_file.write_all(ENCRYPTION_MARKER).expect("Error writing marker");
-    output_file.write_all(&nonce_bytes).expect("Error writing nonce");
-    output_file.write_all(&ciphertext).expect("Error writing ciphertext");
+    output_file
+        .write_all(ENCRYPTION_MARKER)
+        .expect("Error writing marker");
+    output_file
+        .write_all(&nonce_bytes)
+        .expect("Error writing nonce");
+    output_file
+        .write_all(&ciphertext)
+        .expect("Error writing ciphertext");
 
     println!("File encrypted successfully: {:?}", file_path);
 }
@@ -92,9 +100,6 @@ pub fn encrypt_folder(folder_path: &Path, key: &str) {
         }
     }
 }
-
-
-
 
 // Decrypt a single file using AES-GCM
 fn decrypt_file(file_path: &Path, key: &str) {
@@ -162,7 +167,9 @@ fn decrypt_file(file_path: &Path, key: &str) {
         Ok(decrypted_data) => {
             // Write the decrypted data back to the file
             let mut output_file = fs::File::create(file_path).expect("Error creating file");
-            output_file.write_all(&decrypted_data).expect("Error writing decrypted data");
+            output_file
+                .write_all(&decrypted_data)
+                .expect("Error writing decrypted data");
             println!("File decrypted successfully.");
         }
         Err(_) => {
@@ -170,7 +177,6 @@ fn decrypt_file(file_path: &Path, key: &str) {
         }
     }
 }
-
 
 // Recursively decrypt all files in a folder
 pub fn decrypt_folder(folder_path: &Path, key: &str) {

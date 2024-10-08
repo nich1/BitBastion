@@ -2,7 +2,27 @@ use aes_gcm::aead::{Aead, KeyInit};
 use aes_gcm::{Aes256Gcm, Key, Nonce};
 use sha2::{Digest, Sha256};
 use std::fs;
+use std::fs::File;
 use std::path::Path;
+
+pub fn is_key_created() -> bool {
+    let path = Path::new("Key/enckey.bin");
+    match fs::metadata(&path) {
+        Ok(metadata) => {
+            if metadata.is_file() {
+                if metadata.len() == 0 {
+                    return false;
+                } else {
+                    return true;
+                }
+            } else {
+                println!("This is not a regular file");
+            }
+        }
+        Err(e) => return false,
+    }
+    return false;
+}
 
 pub fn enter_key(key: &str) {
     // Generates key

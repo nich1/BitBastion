@@ -3,6 +3,7 @@ use aes_gcm::{Aes256Gcm, Key, Nonce};
 use rand::Rng;
 use serde::{Deserialize, Serialize};
 use std::fs;
+use std::path::Path;
 
 use crate::keymanager;
 
@@ -18,10 +19,39 @@ struct KeyValuePair {
     Value: String,
 }
 
+fn is_dat_empty() -> bool {
+    let path = Path::new("Managed/dat.enc");
+    match fs::metadata(&path) {
+        Ok(metadata) => {
+            if metadata.is_file() {
+                if metadata.len() == 0 {
+                    return true;
+                } else {
+                    return false;
+                    println!("Data is empty");
+                }
+            } else {
+                println!("This is not a regular file");
+            }
+        }
+        Err(e) => {
+            println!("ERR");
+            return true;
+        }
+    }
+    println!("ERR");
+
+    return true;
+}
+
 pub fn change_value(key: &str, service_name: &str, pair_key: &str, new_value: &str) {
     // Validate key
     if !keymanager::check_key(key) {
         println!("Invalid key");
+        return;
+    }
+
+    if is_dat_empty() {
         return;
     }
 
@@ -110,6 +140,10 @@ pub fn rename_pair_key(key: &str, service_name: &str, pair_key: &str, new_pair_k
         return;
     }
 
+    if is_dat_empty() {
+        return;
+    }
+
     // Read the key bytes
     let key_bytes = fs::read("Key/enckey.bin").expect("Error reading key");
 
@@ -192,6 +226,10 @@ pub fn delete_pair(key: &str, service_name: &str, pair_key: &str) {
     // Validate key
     if !keymanager::check_key(key) {
         println!("Invalid key");
+        return;
+    }
+
+    if is_dat_empty() {
         return;
     }
 
@@ -285,6 +323,10 @@ pub fn create_pair(key: &str, service_name: &str, pair_key: &str, pair_value: &s
         return;
     }
 
+    if is_dat_empty() {
+        return;
+    }
+
     // Read the key bytes
     let key_bytes = fs::read("Key/enckey.bin").expect("Error reading key");
 
@@ -373,6 +415,10 @@ pub fn delete_service(key: &str, service_name: &str) {
     // Validate key
     if !keymanager::check_key(key) {
         println!("Invalid key");
+        return;
+    }
+
+    if is_dat_empty() {
         return;
     }
 
@@ -474,6 +520,10 @@ pub fn rename_service(key: &str, service_name: &str, new_service_name: &str) {
         return;
     }
 
+    if is_dat_empty() {
+        return;
+    }
+
     // Read the key bytes
     let key_bytes = fs::read("Key/enckey.bin").expect("Error reading key");
 
@@ -569,6 +619,10 @@ pub fn read_service(key: &str) {
         return;
     }
 
+    if is_dat_empty() {
+        return;
+    }
+
     // Read the key bytes
     let key_bytes = fs::read("Key/enckey.bin").expect("Error reading key");
 
@@ -613,7 +667,7 @@ pub fn read_service(key: &str) {
     for service in service_data {
         println!("Service: {}", service.Title);
         for pair in service.Pairs {
-            println!("\tKey: {}, Value: {}", pair.Key, pair.Value);
+            println!("\tKey: \"{}\", Value: \"{}\"", pair.Key, pair.Value);
         }
     }
 }
